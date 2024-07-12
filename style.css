@@ -1,0 +1,82 @@
+/* Set background color and font family for the entire HTML document */
+html{
+    background-color: #ffcbaccf;
+    font-family: monospace;
+}
+
+/* Remove default margin for the body */
+body{
+    margin:0;
+}
+
+/* Style the main heading container */
+.mainHeading{
+    top: 0;
+    position: fixed;
+    width: 100vw;
+    height: 5rem;
+    background: #e9b6725c;
+    box-shadow: -1px 1px 6px #0000008f;
+}
+
+/* Center the welcome message text */
+.welcomeMessage{
+    text-align: center;
+}
+
+/* Style the burger information container with grid layout */
+.burgerInfoContainer{
+    margin: 9rem auto auto auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr 0.1fr 0.4fr;
+}
+
+/* Align the first burger GIF to the end and add right margin */
+.burgerGif{
+    justify-self: end;
+    margin-right: 26px;
+}
+
+/* Align the second burger GIF to the baseline and add left margin */
+.burgerGif2{
+    justify-self: baseline;
+    margin-left: 24px;
+}
+
+/* Style the burger text container */
+.burgerText{
+    width: 43rem;
+    font-size: 19px;
+    text-align: center;
+    padding: 2rem;
+    align-self: center;
+    border-radius: 2rem;
+    background: linear-gradient(90deg, #fbd8ac 10%, #ffe9c0 30%, #ffebeb 100%);
+    box-shadow: black 1px 1px 5px;
+    grid-column: 2;
+}
+
+/* Style the instructions text */
+.instructions{
+    grid-column: 2;
+    grid-row: 2;
+    text-align: center;
+    font-size: 17px;
+    font-weight: 5;
+    font-style: italic;
+}
+
+/* Style the burger order button */
+.burgerButton{
+    width: 7rem;
+    margin: auto;
+    grid-column: 2;
+    grid-row: 3;
+    font-family: 'monospace';
+    border-color: rgb(188, 97, 97);
+    border-radius: 1rem;
+    font-size: 18px;
+    font-style: italic;
+    cursor: pointer;
+}

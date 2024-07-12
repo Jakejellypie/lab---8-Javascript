@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Burger-Assignment</title>
+    <link rel = "stylesheet" href = "style.css">
+</head>
+<body>
+    <div class = "mainHeading">
+        <h1 class = "welcomeMessage">Welcome to the World's Best Burger Shop.</h1>
+    </div>
+    <div class = "burgerInfoContainer">
+        <img src = "burgerGif.gif" class = "burgerGif">
+        <h1 class = "burgerText"></h1>
+        <img src = "burgerGif.gif" class = "burgerGif2">
+        <h2 class = "instructions">To order your burger, please click on the order button below.</h2>
+        <button type="Button" class = "burgerButton">Order</button> 
+    </div>
+
+    <script>
+        // Creating a variable for the button that will generate the order
+        const burgerButton = document.querySelector('.burgerButton');
+        // Creating a variable for the burger descriptive text itself
+        let burgerText = document.querySelector('.burgerText');
+        // Creating arrays containing all the different ingredients of the burger
+        const bunArray = ["wholegrain", "white-bread", "brown-bread"];
+        const veggieArray = ["Tomatos", "Cucumber", "Lettuce"];
+        const cheeseArray = ["Goat-cheese", "Mozzarella-cheese", "Chedder-cheese"];
+        const sauceArray = ["Hot-Sauce", "Mild-Sauce", "BBQ-Sauce"];
+        const pattyNumArray = ["single", "double", "triple"];
+        const meatArray = ["Chicken", "Beef", "Veggie"];
+        const toppingArray = ["Pickles", "Olives", "Red-Pepper"];
+
+        // Burger constructor function to create a burger with specified ingredients
+        function Burger(constructorBun, constructorVeggies, constructorCheese, constructorSauce, constructorPattyNum,
+                        constructorMeat, constructorToppings){
+            this.constructorBun = constructorBun;
+            this.constructorVeggies = constructorVeggies;
+            this.constructorCheese = constructorCheese;
+            this.constructorSauce = constructorSauce;
+            this.constructorPattyNum = constructorPattyNum;
+            this.constructorMeat = constructorMeat;
+            this.constructorToppings = constructorToppings;
+
+            // Function to update the burgerText with the summary of the burger
+            this.summary = function(){
+                burgerText.textContent = `Your burger comes in ${constructorBun} buns, with ${constructorVeggies}, ${constructorCheese}, ${constructorSauce}, and a ${constructorPattyNum} ${constructorMeat} patty with some ${constructorToppings}.`;  
+            }
+
+            // Function to set the default message in burgerText
+            this.default = function(){
+                burgerText.textContent = "This is where your order will show up."
+            }
+        }
+        
+        // Generate a random number to select a random ingredient from arrays
+        let randomNum = Math.floor((Math.random() * 3) + 0);
+        // Create a new Burger object with random ingredients
+        let newBurger = new Burger(bunArray[randomNum], veggieArray[randomNum], cheeseArray[randomNum], sauceArray[randomNum], pattyNumArray[randomNum], meatArray[randomNum], toppingArray[randomNum]);
+        newBurger.default(); // Set the default message
+
+        // Add event listener to the button to generate a new order on click
+        burgerButton.addEventListener('click', function(){
+            const val = ['', '', '',];
+            // Loop to select a random ingredient for each category
+            for(let i = 0; i < 7; i++){
+                randomNum = Math.floor((Math.random() * 3) + 0);
+                if(i == 0){
+                    val[i] = bunArray[randomNum];
+                }
+                else if(i == 1){
+                    val[i] = veggieArray[randomNum];
+                }
+                else if(i == 2){
+                    val[i] = cheeseArray[randomNum];
+                }
+                else if(i == 3){
+                    val[i] = sauceArray[randomNum];
+                }
+                else if(i == 4){
+                    val[i] = pattyNumArray[randomNum];
+                }
+                else if(i == 5){
+                    val[i] = meatArray[randomNum];
+                }
+                else if(i == 6){
+                    val[i] = toppingArray[randomNum];
+                }
+            }
+
+            // Create a new Burger object with the selected random ingredients
+            newBurger = new Burger(val[0], val[1], val[2], val[3], val[4], val[5], val[6]);
+            console.log(val); // Log the selected ingredients to the console
+            newBurger.summary(); // Update the burgerText with the summary of the new burger
+        })
+
+    </script>
+    
+</body>
+</html>
